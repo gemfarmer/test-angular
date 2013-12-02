@@ -1,0 +1,11 @@
+h2#controllers Controllers
+		p We have modified the data above to be accessible from controller files. 
+			| I created a controller.js file in public/javascripts with a constructor 
+			| function that defines the array of objects that I initialized in the previous example
+		hr
+		//- Access SimpleController within controllers module
+		.container(ng-controller="controllers.SimpleController")
+			label Filter:
+			input(type="text", ng-model="filterNames", placeholder="Enter a word..")
+			ul
+				li(ng-repeat="name in names | filter:filterNames | orderBy:'city'") {{name.name | lowercase}} – {{name.city | lowercase}}

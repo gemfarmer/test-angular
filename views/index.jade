@@ -1,0 +1,57 @@
+extends layout
+
+block content
+	h1= title
+	p Check out some awesome examples that demonstrate why Angular kicks ass
+	p For more info check out Angular's 
+		a(href="http://docs.angularjs.org/api/") API Docs
+
+	hr
+	.content(data-ng-app="testAngular")
+		h2#input Simple Input Field
+		p Text automagically gets transported from the directive ng-model="yourName" 
+			| and is interpreted by the databinding template
+		hr
+		label Name:
+		input(type="text", ng-model="yourName", placeholder="Enter a name here")
+		
+		p Hello my name is {{yourName}}
+
+		h2#ng-repeat ng-repeat Directive
+		p ng-repeat is a loop. In this particular example I have hard-code initialized 
+			| (ng-init) and looping through to grab keys
+			| I am also using the filter property to remove all names that don't match the input above. 
+		hr
+
+		.container(ng-init="names=[{name:'Brian', city:'Minneapolis'}, {name:'Chase', city:'Madison'}, {name:'Collin', city:'Boulder'}, {name: 'Brian', city: 'Boulder'}]")
+			ul
+				li(ng-repeat="name in names | filter:yourName | orderBy:'city'") {{name.name | uppercase}} – {{name.city}}
+				
+		h2#controllers Controllers
+		p We have modified the data above to be accessible from controller files. 
+			| I created a controller.js file in public/javascripts with a constructor 
+			| function that defines the array of objects that I initialized in the previous example
+		hr
+		//- Access SimpleController within controllers module
+		.container(ng-controller="controllers.SimpleController")
+			label Filter:
+			input(type="text", ng-model="filterNames", placeholder="Enter a word..")
+			ul
+				li(ng-repeat="name in names | filter:filterNames | orderBy:'city'") {{name.name | lowercase}} – {{name.city | lowercase}}
+		h2#addingButtons Interacting with the controller. Adding buttons.
+		p
+		hr
+		.container(ng-controller="controllers.SimpleController")
+			label Name:
+			input(type="text", ng-model="newPerson.name", placeholder="Enter a name..")
+			label City:
+			input(type="text", ng-model="newPerson.city", placeholder="Enter a city..")
+			button(data-ng-click="addPerson()") Add Person
+
+			label Added Names:
+			ul
+				li(ng-repeat="name in names | orderBy:'name'") {{name.name}} – {{name.city}}
+		
+			
+
+

@@ -1,0 +1,10 @@
+<h2 id='ng-repeat' data-ng-repeat="">Directive</h2>
+	<p>ng-repeat is a loop. In this particular example I have hard-code initialized (ng-init) and looping through to grab keys I am also using the filter property to remove all names that don't match the input above.</p>
+
+	<div class='container' data-ng-init="names=[{name:'Brian', city:'Minneapolis'}, {name:'Chase', city:'Madison'}, {name:'Collin', city:'Boulder'}, {name: 'Brian', city: 'Boulder'}]"></div>
+		<ul>
+			<li data-ng-repeat="name in names | filter:yourName | orderBy:'city'">{{name.name | uppercase}} – {{name.city}}
+			</li>
+		</ul>
+			
+	

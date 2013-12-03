@@ -1,0 +1,8 @@
+h2#input Simple Input Field
+	p Text automagically gets transported from the directive ng-model="yourName" 
+		| and is interpreted by the databinding template
+	hr
+	label Name:
+	input(type="text", ng-model="yourName", placeholder="Enter a name here")
+
+	p Hello my name is {{yourName}}

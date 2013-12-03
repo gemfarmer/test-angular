@@ -29,6 +29,11 @@ config(function($routeProvider,$locationProvider){
 				templateUrl: 'partials/view4',
 				controller: 'SimpleController'
 			}).
+		when('/view5',
+			{
+				templateUrl: 'partials/view5',
+				controller: 'SimpleController'
+			}).
 		otherwise(
 			{
 				redirectTo: '/view1'

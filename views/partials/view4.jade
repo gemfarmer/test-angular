@@ -6,13 +6,19 @@ h2#addingButtons Interacting with the controller. Adding buttons.
 		
 		label Name:
 		input(type="text", ng-model="newPerson.name", placeholder="Enter a name..")
+		br
 		label City:
 		input(type="text", ng-model="newPerson.city", placeholder="Enter a city..")
+		br
 		button(data-ng-click="addPerson()") Add Person
-
+		br
+		label Filter:
+		input(type="text", ng-model="filter.person", placeholder="Filter Names")
+		br
 		label Added Names:
 		ul
-			li(ng-repeat="name in names | orderBy:'name'") {{name.name}} – {{name.city}}
+			li(ng-repeat="name in names | filter:filter.person | orderBy:'city'") {{name.name}} – {{name.city}}
 		
+
 		
 
